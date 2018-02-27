@@ -30,7 +30,7 @@
         <!--Add a location-->
         <scene sceneID="Rib-Aj-9fU">
             <objects>
-                <tableViewController id="4M5-6s-fi0" sceneMemberID="viewController">
+                <tableViewController id="4M5-6s-fi0" customClass="LocationSearchTableViewController" customModule="spacetime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SVg-b4-qFw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

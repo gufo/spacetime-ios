@@ -12,8 +12,7 @@ class LocationSearchTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTouchCancelButton))
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,6 +76,12 @@ class LocationSearchTableViewController: UITableViewController {
         return true
     }
     */
+
+    // MARK: - UINavigationBar actions
+
+    @objc func didTouchCancelButton() {
+        self.dismiss(animated: true)
+    }
 
     /*
     // MARK: - Navigation
