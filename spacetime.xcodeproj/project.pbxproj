@@ -16,6 +16,8 @@
 		2DDB13152045BACA00565881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB13132045BACA00565881 /* LaunchScreen.storyboard */; };
 		2DDB13202045BACB00565881 /* spacetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB131F2045BACB00565881 /* spacetimeTests.swift */; };
 		2DDB132B2045BACB00565881 /* spacetimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB132A2045BACB00565881 /* spacetimeUITests.swift */; };
+		2DDB133A2045C04F00565881 /* Geofences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DDB13392045C04F00565881 /* Geofences.storyboard */; };
+		2DDB133E2045CCE000565881 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB133D2045CCE000565881 /* LocationSearchTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		2DDB13262045BACB00565881 /* spacetimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spacetimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DDB132A2045BACB00565881 /* spacetimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spacetimeUITests.swift; sourceTree = "<group>"; };
 		2DDB132C2045BACB00565881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DDB13392045C04F00565881 /* Geofences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Geofences.storyboard; sourceTree = "<group>"; };
+		2DDB133D2045CCE000565881 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		2DDB13042045BACA00565881 /* spacetime */ = {
 			isa = PBXGroup;
 			children = (
+				2DDB13382045C02400565881 /* Geofences */,
 				2DDB13052045BACA00565881 /* AppDelegate.swift */,
 				2DDB130A2045BACA00565881 /* MasterViewController.swift */,
 				2DDB130C2045BACA00565881 /* DetailViewController.swift */,
@@ -129,6 +134,15 @@
 				2DDB132C2045BACB00565881 /* Info.plist */,
 			);
 			path = spacetimeUITests;
+			sourceTree = "<group>";
+		};
+		2DDB13382045C02400565881 /* Geofences */ = {
+			isa = PBXGroup;
+			children = (
+				2DDB13392045C04F00565881 /* Geofences.storyboard */,
+				2DDB133D2045CCE000565881 /* LocationSearchTableViewController.swift */,
+			);
+			path = Geofences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +254,7 @@
 			files = (
 				2DDB13152045BACA00565881 /* LaunchScreen.storyboard in Resources */,
 				2DDB13122045BACA00565881 /* Assets.xcassets in Resources */,
+				2DDB133A2045C04F00565881 /* Geofences.storyboard in Resources */,
 				2DDB13102045BACA00565881 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +282,7 @@
 			files = (
 				2DDB13062045BACA00565881 /* AppDelegate.swift in Sources */,
 				2DDB13092045BACA00565881 /* spacetime.xcdatamodeld in Sources */,
+				2DDB133E2045CCE000565881 /* LocationSearchTableViewController.swift in Sources */,
 				2DDB130B2045BACA00565881 /* MasterViewController.swift in Sources */,
 				2DDB130D2045BACA00565881 /* DetailViewController.swift in Sources */,
 			);
