@@ -51,5 +51,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Vi håller koll på när du besöker de platser du själv lägger in i appen.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Vi håller koll på när du besöker de platser du själv lägger in i appen.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Vi håller koll på när du besöker de platser du själv lägger in i appen.</string>
 </dict>
 </plist>

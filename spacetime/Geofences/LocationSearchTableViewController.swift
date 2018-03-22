@@ -64,6 +64,7 @@ class LocationSearchTableViewController: UITableViewController {
 
         do {
             try managedObjectContext.save()
+            GeofencingController.current.add(location: location)
             performSegue(withIdentifier: "dismiss", sender: nil)
         } catch {
             fatalError(String(describing: error))
