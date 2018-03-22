@@ -18,6 +18,10 @@ class GeofencingController: NSObject {
         locationManager.delegate = self
     }
 
+    func startup() {
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+
     func add(location: Location) {
         locationManager.requestAlwaysAuthorization()
 
@@ -56,5 +60,21 @@ extension GeofencingController: CLLocationManagerDelegate {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             pendingLocations.forEach { startMonitoring(location: $0) }
         }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        NSLog("Started monitoring region \"\(region.identifier)\"")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        NSLog("Entered region \"\(region.identifier)\"")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        NSLog("Exited region \"\(region.identifier)\"")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+        NSLog("Region \"\(region.identifier)\" changed to state \(state.rawValue)")
     }
 }

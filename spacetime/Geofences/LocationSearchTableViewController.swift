@@ -58,7 +58,7 @@ class LocationSearchTableViewController: UITableViewController {
         location.title = mapItem.name
         location.address = mapItem.placemark.title
         location.latitude = mapItem.placemark.coordinate.latitude
-        location.latitude = mapItem.placemark.coordinate.longitude
+        location.longitude = mapItem.placemark.coordinate.longitude
         location.radiusInMeters = 100
         location.createdAt = Date()
 
