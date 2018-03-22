@@ -4,6 +4,7 @@
 
 import UIKit
 import MapKit
+import Contacts
 
 class LocationSearchTableViewController: UITableViewController {
     var searchController: UISearchController!
@@ -38,8 +39,10 @@ class LocationSearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "location", for: indexPath)
+        let mapItem = searchResults[indexPath.row]
 
-        cell.textLabel?.text = searchResults[indexPath.row].name
+        cell.textLabel?.text = mapItem.name
+        cell.detailTextLabel?.text = mapItem.placemark.title
 
         return cell
     }
