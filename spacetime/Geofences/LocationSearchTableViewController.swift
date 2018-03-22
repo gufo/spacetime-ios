@@ -5,8 +5,10 @@
 import UIKit
 import MapKit
 import Contacts
+import CoreData
 
 class LocationSearchTableViewController: UITableViewController {
+    var managedObjectContext: NSManagedObjectContext!
     var searchController: UISearchController!
     var searchResults: [MKMapItem] = []
 
@@ -45,6 +47,27 @@ class LocationSearchTableViewController: UITableViewController {
         cell.detailTextLabel?.text = mapItem.placemark.title
 
         return cell
+    }
+
+    // MARK: - Table view events
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mapItem = searchResults[indexPath.row]
+
+        let location = Location(context: managedObjectContext)
+        location.title = mapItem.name
+        location.address = mapItem.placemark.title
+        location.latitude = mapItem.placemark.coordinate.latitude
+        location.latitude = mapItem.placemark.coordinate.longitude
+        location.radiusInMeters = 100
+        location.createdAt = Date()
+
+        do {
+            try managedObjectContext.save()
+            performSegue(withIdentifier: "dismiss", sender: nil)
+        } catch {
+            fatalError(String(describing: error))
+        }
     }
 
     // MARK: - UINavigationBar actions

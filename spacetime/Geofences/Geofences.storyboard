@@ -70,8 +70,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add a location" id="zIt-Dl-EVD"/>
+                    <connections>
+                        <segue destination="3Wv-f7-T0K" kind="unwind" identifier="dismiss" unwindAction="unwindToMaster:" id="uxz-ka-qlG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgD-nz-RuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3Wv-f7-T0K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="370" y="134"/>
         </scene>
