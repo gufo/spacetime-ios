@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let controller = masterNavigationController.topViewController as! MasterViewController
         controller.managedObjectContext = self.persistentContainer.viewContext
 
-        GeofencingController.current.startup()
+        GeofencingController.current = GeofencingController(managedObjectContext: self.persistentContainer.newBackgroundContext())
         return true
     }
 

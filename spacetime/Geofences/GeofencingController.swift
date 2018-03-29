@@ -3,16 +3,19 @@
 //
 
 import Foundation
+import CoreData
 import CoreLocation
 
 class GeofencingController: NSObject {
-    static var current: GeofencingController = GeofencingController()
+    static var current: GeofencingController!
 
+    var managedObjectContext: NSManagedObjectContext
     var locationManager: CLLocationManager
     var pendingLocations: [Location] = []
 
-    override init() {
+    init(managedObjectContext: NSManagedObjectContext) {
         locationManager = CLLocationManager()
+        self.managedObjectContext = managedObjectContext
         super.init()
 
         locationManager.delegate = self
@@ -69,13 +72,33 @@ extension GeofencingController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         NSLog("Entered region \"\(region.identifier)\"")
+
+        do {
+            guard let location = try managedObjectContext.fetch(Location.named(region.identifier)).first else {
+                return
+            }
+
+            location.startVisit(date: Date())
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Failed to start visit at location \"\(region.identifier)\"")
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         NSLog("Exited region \"\(region.identifier)\"")
-    }
 
-    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-        NSLog("Region \"\(region.identifier)\" changed to state \(state.rawValue)")
+        do {
+            guard let location = try managedObjectContext.fetch(Location.named(region.identifier)).first else { return }
+            guard let visit = location.currentVisit() else {
+                NSLog("Could not find a current visit at \"\(region.identifier)\"")
+                return
+            }
+
+            visit.ended = Date()
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Failed to end visit at location \"\(region.identifier)\"")
+        }
     }
 }
