@@ -59,6 +59,7 @@ extension GeofencingController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             pendingLocations.forEach { startMonitoring(location: $0) }
+            pendingLocations = []
         }
     }
 
