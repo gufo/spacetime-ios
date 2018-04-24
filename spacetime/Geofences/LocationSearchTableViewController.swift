@@ -11,6 +11,7 @@ class LocationSearchTableViewController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!
     var searchController: UISearchController!
     var searchResults: [MKMapItem] = []
+    var search: MKLocalSearch?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,17 +77,6 @@ class LocationSearchTableViewController: UITableViewController {
     @objc func didTouchCancelButton() {
         self.dismiss(animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension LocationSearchTableViewController: UISearchResultsUpdating {
@@ -95,12 +85,13 @@ extension LocationSearchTableViewController: UISearchResultsUpdating {
             self.searchResults = []
             return
         }
+        search?.cancel()
 
         let searchRequest = MKLocalSearchRequest()
         searchRequest.naturalLanguageQuery = query
 
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { response, error in
+        search = MKLocalSearch(request: searchRequest)
+        search?.start { response, error in
             self.searchResults = response?.mapItems ?? []
             self.tableView.reloadData()
         }
